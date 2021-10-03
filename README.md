@@ -124,3 +124,123 @@ export default class App extends React.Component {
   }
 }
 ```
+
+## Estilizando o CSS, dentro de um arquivo .js (styled-components, 1 Opção)
+
+Comando para instalar o styled-components
+
+```js
+yarn add styled-components
+```
+
+Arquivo App.js
+
+```js
+import React from "react";
+
+import { Container, Title } from "./style";
+
+function App() {
+  return (
+    <Container>
+      <Title>Hello Word</Title>
+    </Container>
+  );
+}
+
+export default App;
+```
+
+Arquivo, style.js
+
+```js
+import styled, { CSS } from "styled-components/native";
+
+export const Container = styled.View`
+  flex: 1;
+  background-color: yellow;
+  justify-content: center;
+`;
+
+export const Title = styled.Text`
+  color: black;
+  text-align: center;
+`;
+```
+
+## Estilizando o CSS, dentro de um arquivo .js (styled-components, 2 Opção)
+
+Repare que neste exemplo, é mais resumido, olha esta linha abaixo, o St,
+subistitui todos os nomes que estavam sendo importados anteriormente.
+
+```js
+import * as St from "./style";
+```
+
+Arquivo App.js
+
+```js
+import React from "react";
+
+import * as St from "./style";
+
+function App() {
+  return (
+    <St.Container>
+      <St.Title>Hello Word</St.Title>
+    </St.Container>
+  );
+}
+
+export default App;
+```
+
+Arquivo, style.js
+
+```js
+import styled, { CSS } from "styled-components/native";
+
+export const Container = styled.View`
+  flex: 1;
+  background-color: yellow;
+  justify-content: center;
+`;
+
+export const Title = styled.Text`
+  color: black;
+  text-align: center;
+`;
+```
+
+## Estilizando o CSS, dentro de um arquivo .js (styled-components, 3 Opção)
+
+Repare que neste exemplo, está tudo no mesmo arquivo, não estamos utizando
+outro arquivo para separar o css, agora depende qual a empresa vai querer para
+estilizar o projeto.
+
+Arquivo App.js
+
+```js
+import React from "react";
+import styled, { Css } from "styled-components/native";
+
+const Geral = styled.View`
+  flex: 1;
+  background-color: yellow;
+  justify-content: center;
+`;
+const Texto = styled.Text`
+  color: black;
+  text-align: center;
+`;
+
+function App() {
+  return (
+    <Geral>
+      <Texto>Olá mundo</Texto>
+    </Geral>
+  );
+}
+
+export default App;
+```
